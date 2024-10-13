@@ -6,7 +6,7 @@ import 'game.dart';
 
 class CardWidget extends StatelessWidget {
   final CardModel card;
-  const CardWidget({Key? key, required this.card}) : super(key: key);
+  const CardWidget({super.key, required this.card});
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +14,19 @@ class CardWidget extends StatelessWidget {
       onTap: () {
         if (!card.revealed) {
           card.revealed = true;
-          Provider.of<GameProvider>(context, listen: false).selectCard(card);
+          Provider.of<GP>(context, listen: false).selectCard(card);
         }
       },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 420),
         child: card.revealed
             ? Image.asset(card.img)
             : Container(
                 color: Colors.orange,
                 child: const Center(
                   child: Text(
-                    '?',
-                    style: TextStyle(fontSize: 30, color: Colors.white),
+                    '???',
+                    style: TextStyle(fontSize: 42, color: Colors.black),
                   ),
                 ),
               ),
